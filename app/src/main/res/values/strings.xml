@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Night Glass</string>
+
+    <string name="title_activity_fullscreen">FullscreenActivity</string>
+
+    <string name="pause">Pause</string>
+    <string name="resume">Resume</string>
+</resources>

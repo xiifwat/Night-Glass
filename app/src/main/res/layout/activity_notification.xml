@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:paddingBottom="3dp"
+    android:paddingLeft="3dp"
+    android:paddingRight="3dp"
+    android:paddingTop="3dp"
+    android:background="@color/dark"
+    tools:context=".NotificationActivity"
+    >
+
+    <RelativeLayout
+        android:orientation="horizontal"
+        android:layout_width="400dp"
+        android:layout_height="200dp"
+        android:background="@drawable/activity_main_gradient"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        >
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Settings"
+            android:id="@+id/btn_stop"
+            android:layout_alignParentTop="true"
+            android:layout_alignLeft="@+id/seekBarRed"
+            android:layout_alignStart="@+id/seekBarRed"
+            android:layout_marginTop="3dp" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/btn_pause"
+            android:visibility="visible"
+            android:layout_alignParentTop="true"
+            android:layout_alignRight="@+id/seekBarBrightness"
+            android:layout_alignEnd="@+id/seekBarBrightness"
+            android:layout_marginTop="3dp"
+            android:text="Pause" />
+
+        <SeekBar
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/seekBarBrightness"
+            android:layout_centerVertical="true"
+            android:layout_centerHorizontal="true"
+            android:max="255"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:indeterminate="false" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:text="Control Brightness"
+            android:id="@+id/textView"
+            android:layout_above="@+id/seekBarBrightness"
+            android:layout_alignLeft="@+id/seekBarBrightness"
+            android:layout_alignStart="@+id/seekBarBrightness"
+            android:padding="3dp"
+            android:textStyle="bold"
+            android:textColor="#cdcdcd" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:text="Control Red Light"
+            android:id="@+id/textView2"
+            android:padding="3dp"
+            android:layout_below="@+id/seekBarBrightness"
+            android:layout_alignLeft="@+id/seekBarBrightness"
+            android:layout_alignStart="@+id/seekBarBrightness"
+            android:textColor="#cdcdcd"
+            android:textStyle="bold" />
+
+        <SeekBar
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/seekBarRed"
+
+            android:max="255"
+            android:layout_centerVertical="true"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@+id/textView2"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"/>
+
+    </RelativeLayout>
+</RelativeLayout>
