@@ -48,7 +48,7 @@ public class NotificationActivity extends Activity {
         getWindow().requestFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_notification);
 
-        btnStop = (Button) findViewById(R.id.btn_stop);
+        btnStop = (Button) findViewById(R.id.btn_setting);
         btnStop.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

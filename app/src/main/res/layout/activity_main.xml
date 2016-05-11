@@ -4,18 +4,133 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
-    android:background="@drawable/activity_main_gradient"
     tools:context=".MainActivity">
 
-    <Button
+    <RelativeLayout
+        android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Start Sevice"
-        android:id="@+id/btn_service"
-        android:layout_centerVertical="true"
-        android:layout_centerHorizontal="true"/>
+        android:layout_height="match_parent"
+        android:background="@drawable/activity_main_gradient"
+        android:paddingTop="10dp"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp"
+        android:paddingBottom="0dp"
+        android:layout_below="@+id/imageView"
+        android:layout_centerVertical="true">
+
+        <RelativeLayout
+            android:id="@+id/cont_first"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:background="@drawable/bg"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:visibility="gone">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="@string/start"
+                android:id="@+id/textView3"
+                android:textSize="18sp"
+                android:gravity="left"
+                android:textColor="#a6d1f5"
+                android:layout_alignParentLeft="true"
+                android:layout_centerVertical="true"/>
+
+            <com.mikepenz.iconics.view.IconicsButton
+                android:layout_width="40sp"
+                android:layout_height="40sp"
+                android:text="@string/start_icon"
+                android:textSize="25sp"
+                android:textColor="#a6d1f5"
+                android:background="@drawable/btn_state"
+                android:visibility="visible"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"/>
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/cont_second"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:background="@drawable/bg"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/btn_service"
+            android:layout_marginTop="10dp">
+
+            <SeekBar
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/seekBarBrightness"
+                android:max="255"
+                android:indeterminate="false"
+                android:layout_toRightOf="@+id/tv_brightness"
+                android:layout_centerVertical="true"
+                android:layout_alignParentRight="true"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="Brightness"
+                android:id="@+id/tv_brightness"
+                android:layout_alignParentStart="false"
+                android:layout_alignParentLeft="true"
+                android:layout_centerVertical="true"
+                android:textColor="#ffffff"/>
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/cont_third"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:background="@drawable/bg"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/cont_second"
+            android:layout_marginTop="10dp">
+
+            <SeekBar
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/seekBarRed"
+                android:max="255"
+                android:indeterminate="false"
+                android:layout_centerVertical="true"
+                android:layout_toRightOf="@+id/tv_red_light"/>
+
+            <TextView
+                android:id="@+id/tv_red_light"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="Red Light"
+                android:textColor="#ffffff"
+                android:layout_alignParentLeft="true"
+                android:layout_centerVertical="true"/>
+        </RelativeLayout>
+
+
+        <com.mikepenz.iconics.view.IconicsButton
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/start"
+            android:id="@+id/btn_service"
+            android:textSize="18sp"
+            android:background="@drawable/btn_state"
+            android:textColor="#ffffff"
+            android:visibility="visible"/>
+
+    </RelativeLayout>
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:id="@+id/imageView"
+        android:src="@drawable/sss"
+        android:scaleType="fitXY"
+        android:layout_alignParentTop="true"
+        />
+
 </RelativeLayout>

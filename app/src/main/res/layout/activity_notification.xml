@@ -22,26 +22,30 @@
         android:layout_alignParentEnd="true"
         >
 
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Settings"
-            android:id="@+id/btn_stop"
+        <com.mikepenz.iconics.view.IconicsButton
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:text="{faw-cogs}"
+            android:textSize="25sp"
+            android:id="@+id/btn_setting"
+            android:background="@drawable/btn_state"
             android:layout_alignParentTop="true"
             android:layout_alignLeft="@+id/seekBarRed"
             android:layout_alignStart="@+id/seekBarRed"
             android:layout_marginTop="3dp" />
 
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+        <com.mikepenz.iconics.view.IconicsButton
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:text="@string/pause"
+            android:textSize="25sp"
+            android:background="@drawable/btn_state"
             android:id="@+id/btn_pause"
             android:visibility="visible"
             android:layout_alignParentTop="true"
             android:layout_alignRight="@+id/seekBarBrightness"
             android:layout_alignEnd="@+id/seekBarBrightness"
-            android:layout_marginTop="3dp"
-            android:text="Pause" />
+            android:layout_marginTop="3dp" />
 
         <SeekBar
             android:layout_width="match_parent"
@@ -52,13 +56,13 @@
             android:max="255"
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
-            android:indeterminate="false" />
+            android:indeterminate="false"/>
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceSmall"
-            android:text="Control Brightness"
+            android:text="Brightness"
             android:id="@+id/textView"
             android:layout_above="@+id/seekBarBrightness"
             android:layout_alignLeft="@+id/seekBarBrightness"
@@ -71,7 +75,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceSmall"
-            android:text="Control Red Light"
+            android:text="Red Light"
             android:id="@+id/textView2"
             android:padding="3dp"
             android:layout_below="@+id/seekBarBrightness"
@@ -84,7 +88,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/seekBarRed"
-
             android:max="255"
             android:layout_centerVertical="true"
             android:layout_centerHorizontal="true"
