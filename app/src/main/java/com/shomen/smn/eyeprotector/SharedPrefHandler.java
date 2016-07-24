@@ -7,8 +7,7 @@ import android.util.Log;
 public class SharedPrefHandler {
 
     private SharedPreferences sharedPreferences;
-//    private Context context;
-    private String TAG = "tfx_" + SharedPrefHandler.class.getSimpleName();
+    private String TAG = "asl_" + SharedPrefHandler.class.getSimpleName();
     private SharedPreferences.Editor editor;
 
     public SharedPrefHandler(Context context) {
@@ -63,5 +62,55 @@ public class SharedPrefHandler {
         int blue = this.getBlue();
 
         Log.d(tag, "A:" + alpha + " R:" + red + " G:" + green + " B:" + blue);
+    }
+
+    public void setCustomModeStartTime(int hour, int minute) {
+
+        editor.putString(Constants.TAG_START_TIME_CUSTOM, new Util().intToTimeString24Hour(hour, minute));
+        editor.commit();
+    }
+
+    public void setCustomModeStopTime(int hour, int minute) {
+
+        editor.putString(Constants.TAG_STOP_TIME_CUSTOM, new Util().intToTimeString24Hour(hour, minute));
+        editor.commit();
+    }
+
+    public String getCustomModeStartTime() {
+        return sharedPreferences.getString(Constants.TAG_START_TIME_CUSTOM, "0:0");
+    }
+
+    public String getCustomModeStopTime() {
+        return sharedPreferences.getString(Constants.TAG_STOP_TIME_CUSTOM, "0:0");
+    }
+
+    public void setUserProfile(UserProfile profile) {
+
+        switch (profile) {
+
+            case DEFAULT:
+                editor.putString(Constants.TAG_PROFILE,UserProfile.DEFAULT.getVal());
+                break;
+            case NIGHT_MODE:
+                editor.putString(Constants.TAG_PROFILE,UserProfile.NIGHT_MODE.getVal());
+                break;
+            case CUSTOM:
+                editor.putString(Constants.TAG_PROFILE,UserProfile.CUSTOM.getVal());
+                break;
+        }
+
+        editor.commit();
+    }
+
+    public UserProfile getSelectedUserProfile() {
+        switch (sharedPreferences.getString(Constants.TAG_PROFILE, "1")) {
+
+            case "2":
+                return UserProfile.NIGHT_MODE;
+            case "3":
+                return UserProfile.CUSTOM;
+            default:
+                return UserProfile.DEFAULT;
+        }
     }
 }

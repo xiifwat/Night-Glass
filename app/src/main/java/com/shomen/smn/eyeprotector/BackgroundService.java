@@ -1,8 +1,10 @@
 package com.shomen.smn.eyeprotector;
 
 import android.app.Notification;
+import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.app.Service;
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.PixelFormat;
@@ -19,12 +21,16 @@ import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.widget.LinearLayout;
 
+import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
+
+import java.util.Calendar;
 import java.util.Timer;
 import java.util.TimerTask;
 
 public class BackgroundService extends Service {
 
-    private final String TAG = "tfx_" + this.getClass().getSimpleName();
+    private final String TAG = "asl_" + this.getClass().getSimpleName();
     public static boolean isPaused = false;
 
     private IBinder mBinder = new ServiceBinder();
@@ -82,12 +88,6 @@ public class BackgroundService extends Service {
         parameters.x = 0;
         parameters.y = 0;
 
-       /* Button stop = new Button(this);
-        stop.setText("Stop");
-        ViewGroup.LayoutParams btnParameters = new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,ViewGroup.LayoutParams.WRAP_CONTENT);
-        stop.setLayoutParams(btnParameters);
-
-        ll.addView(stop);*/
         wm.addView(ll, parameters);
 
         ll.setOnTouchListener(new View.OnTouchListener() {
@@ -129,14 +129,7 @@ public class BackgroundService extends Service {
             }
         });
 
-       /* stop.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                wm.removeView(ll);
-                stopSelf();
-                System.exit(0);
-            }
-        });*/
+        EventBus.getDefault().register(this);
     }
 
     @Override
@@ -278,12 +271,41 @@ public class BackgroundService extends Service {
         wm.removeView(ll);
         this.saveSettings();
         super.onDestroy();
+        EventBus.getDefault().unregister(this);
     }
 
     public class ServiceBinder extends Binder {
         BackgroundService getService() {
             return BackgroundService.this;
         }
+    }
+
+    @Subscribe
+    public void onEvent(ExampleEvent event){
+        Log.d(TAG,"event catched "+event.getMessage());
+    }
+
+    @Subscribe
+    public void onEvent(String type){
+        Log.d(TAG,"event catched "+type);
+        sendNotification(type);
+
+    }
+
+    public void sendNotification(String type) {
+
+        Calendar calendar = Calendar.getInstance();
+        NotificationCompat.Builder builder = new NotificationCompat.Builder(getApplicationContext());
+
+        builder.setSmallIcon(R.mipmap.ic_launcher);
+        builder.setContentTitle("Alarm Notifications ");
+        builder.setContentText(type + " " +calendar.getTime().toString());
+        builder.setContentIntent(null);
+        builder.setAutoCancel(true);
+
+        NotificationManager notificationManager = (NotificationManager) getApplicationContext().getSystemService(getApplicationContext().NOTIFICATION_SERVICE);
+
+        notificationManager.notify(calendar.get(Calendar.SECOND), builder.build());
     }
 
 }

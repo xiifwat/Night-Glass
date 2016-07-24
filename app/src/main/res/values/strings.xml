@@ -10,4 +10,11 @@
     <string name="stop">Stop Filter  {faw-stop}</string>
     <string name="stop_icon">{faw-stop}</string>
 
+    <string name="default_mode_text">Display filter is always activated</string>
+    <string name="night_mode_text">Display filter is activated from sunrise to sunset</string>
+    <string name="custom_mode_text">Display filter is activated by users choice</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
 </resources>

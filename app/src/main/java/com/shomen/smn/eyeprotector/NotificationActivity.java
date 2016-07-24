@@ -13,9 +13,13 @@ import android.view.Window;
 import android.widget.Button;
 import android.widget.SeekBar;
 
+import org.greenrobot.eventbus.EventBus;
+
+import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
+
 public class NotificationActivity extends Activity {
 
-    private String TAG = "tfx_" + this.getClass().getSimpleName();
+    private String TAG = "asl_" + this.getClass().getSimpleName();
 
     private  BackgroundService backgroundService;
     private boolean isServiceConnected = false;
@@ -29,6 +33,7 @@ public class NotificationActivity extends Activity {
             backgroundService = binder.getService();
             isServiceConnected = true;
             Log.d(TAG, "service connected");
+            EventBus.getDefault().post(new ExampleEvent("Hello World Event!"));
         }
 
         public void onServiceDisconnected(ComponentName className) {
@@ -57,7 +62,6 @@ public class NotificationActivity extends Activity {
             }
         });
 
-
         btnPause = (Button) findViewById(R.id.btn_pause);
 
         if(BackgroundService.isPaused) btnPause.setText(getResources().getString(R.string.resume));
@@ -71,6 +75,7 @@ public class NotificationActivity extends Activity {
                     // resume it
                     backgroundService.decreaseBrightnessGradually();
                     BackgroundService.isPaused = false;
+
                 } else {
                     // pause it
                     backgroundService.increaseBrightnessGradually();
@@ -110,6 +115,7 @@ public class NotificationActivity extends Activity {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
                 backgroundService.adjustRed(progress);
+                EventBus.getDefault().post(progress);
             }
 
             @Override
@@ -139,6 +145,11 @@ public class NotificationActivity extends Activity {
     public void finish() {
 //        Log.d(TAG,"inside finish.....");
         super.finish();
+    }
+
+    @Override
+    protected void attachBaseContext(Context newBase) {
+        super.attachBaseContext(CalligraphyContextWrapper.wrap(newBase));
     }
 
 }

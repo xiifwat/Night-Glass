@@ -6,6 +6,15 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:id="@+id/imageView"
+        android:src="@drawable/sss"
+        android:scaleType="fitXY"
+        android:layout_alignParentTop="true"
+        />
+
     <RelativeLayout
         android:orientation="vertical"
         android:layout_width="match_parent"
@@ -76,6 +85,7 @@
                 android:textAppearance="?android:attr/textAppearanceMedium"
                 android:text="Brightness"
                 android:id="@+id/tv_brightness"
+                style="@style/tv_style"
                 android:layout_alignParentStart="false"
                 android:layout_alignParentLeft="true"
                 android:layout_centerVertical="true"
@@ -105,32 +115,115 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceMedium"
+                style="@style/tv_style"
                 android:text="Red Light"
                 android:textColor="#ffffff"
                 android:layout_alignParentLeft="true"
                 android:layout_centerVertical="true"/>
         </RelativeLayout>
 
+        <RelativeLayout
+            android:id="@+id/cont_fourth"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:background="@drawable/bg"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/cont_third"
+            android:layout_marginTop="10dp"
+            >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="*Can't modify"
+                android:id="@+id/tvBtnIns"
+                style="@style/tv_style"
+                android:textSize="11sp"
+                android:layout_below="@+id/radioGroup"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"/>
+
+            <RadioGroup
+                android:id="@+id/radioGroup"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:layout_alignParentBottom="false"
+                android:foregroundGravity="clip_horizontal|clip_vertical">
+
+                <RadioButton
+                    android:id="@+id/radioDefault"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    style="@style/tv_style"
+                    android:textSize="18sp"
+                    android:layout_weight="1"
+                    android:background="@drawable/rbtn_selector"
+                    android:button="@null"
+                    android:checked="true"
+                    android:gravity="center"
+                    android:padding="5dp"
+                    android:text="Default"
+                    android:textColor="@drawable/rbtn_textcolor_selector" />
+
+                <RadioButton
+                    android:id="@+id/radioNight"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    style="@style/tv_style"
+                    android:textSize="18sp"
+                    android:layout_weight="1"
+                    android:background="@drawable/rbtn_selector"
+                    android:button="@null"
+                    android:gravity="center"
+                    android:padding="5dp"
+                    android:text="Night"
+                    android:textColor="@drawable/rbtn_textcolor_selector" />
+
+                <RadioButton
+                    android:id="@+id/radioCustom"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@drawable/rbtn_selector"
+                    android:button="@null"
+                    android:gravity="center"
+                    android:padding="5dp"
+                    android:text="Custom"
+                    style="@style/tv_style"
+                    android:textSize="18sp"
+                    android:textColor="@drawable/rbtn_textcolor_selector" />
+
+            </RadioGroup>
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:text="From 10:00 pm ----- To 06:00 am"
+                style="@style/tv_style"
+                android:id="@+id/btnPickerFragment"
+                android:background="@drawable/btn_state"
+                android:layout_below="@+id/tvBtnIns"
+                android:layout_centerHorizontal="true"/>
+
+        </RelativeLayout>
 
         <com.mikepenz.iconics.view.IconicsButton
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/start"
             android:id="@+id/btn_service"
+            style="@style/tv_style"
             android:textSize="18sp"
             android:background="@drawable/btn_state"
             android:textColor="#ffffff"
             android:visibility="visible"/>
 
     </RelativeLayout>
-
-    <ImageView
-        android:layout_width="match_parent"
-        android:layout_height="200dp"
-        android:id="@+id/imageView"
-        android:src="@drawable/sss"
-        android:scaleType="fitXY"
-        android:layout_alignParentTop="true"
-        />
 
 </RelativeLayout>
